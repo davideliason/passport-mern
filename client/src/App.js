@@ -54,7 +54,7 @@ class App extends Component {
   constructor() {
 		super()
 		this.state = {
-			loggedIn: false,
+			loggedIn: true,
 			user: null
 		}
 		this._logout = this._logout.bind(this)
@@ -77,7 +77,7 @@ class App extends Component {
          <nav>
            <Link to="/"> Home</Link>
          </nav>
-         <DisplayLoggedOutLinks loggedIn={this.state.loggedIn} />
+         <DisplayLoggedOutLinks loggedIn={this.state.loggedIn} _logout={this._logout} />
          <div>
            <Route path="/signup" component={SignupForm} />
            <Route 
