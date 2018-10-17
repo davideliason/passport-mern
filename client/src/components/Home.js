@@ -11,10 +11,7 @@ const Home = props => {
 	} else {
 		return (
 			<div className="Home">
-				<p>Hello Stranger!:</p>
-				<code>
-					{JSON.stringify(props)}
-				</code>
+				<p>Hello Stranger!</p>
 			</div>
 		)
 	}
