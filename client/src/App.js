@@ -57,9 +57,19 @@ class App extends Component {
 			loggedIn: false,
 			user: null
 		}
-		// this._logout = this._logout.bind(this)
-		// this._login = this._login.bind(this)
+		this._logout = this._logout.bind(this)
+		this._login = this._login.bind(this)
+  }
+  
+  _logout(event) {
+		event.preventDefault()
+		console.log('logging out')
 	}
+
+	_login(username, password) {
+	  console.log("log in");
+  }
+  
   render() {
     return (
       <div className="App">
@@ -69,7 +79,13 @@ class App extends Component {
          <DisplayLoggedOutLinks loggedIn={this.state.loggedIn} />
          <div>
            <Route path="/signup" component={SignupForm} />
-           <Route path="/login" component={LoginForm} />
+           <Route 
+              exact path="/login"
+				      render={() =>
+					    	<LoginForm
+						    	_login={this._login}
+					  	/>}
+	         />
 			     <Route exact path="/" render={() => <Home user={this.state.user} />} />
 
          </div>
