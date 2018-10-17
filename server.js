@@ -20,14 +20,19 @@ app.get('/', (req,res) => {
     res.end("hello world");
 });
 
-// ROUTES
-app.post('/auth/signup',(req,res) => {
-    console.log("POST");
-    console.log(req.body.username)
-    console.log(req.body.password)
-    res.data = "hhe";
+// PRODUCTION USE CRA BUILD
+if (process.env.NODE_ENV === 'production') {
+	const path = require('path')
+	console.log('YOU ARE IN THE PRODUCTION ENV')
+	app.use('/static', express.static(path.join(__dirname, '../build/static')))
+	app.get('/', (req, res) => {
+		res.sendFile(path.join(__dirname, '../build/'))
+	})
+}
 
-});
+// ROUTES
+app.use('/auth', require('./auth'))
+
 
 app.listen(port, ()=>{
     console.log(`listening at port ${port}`);
