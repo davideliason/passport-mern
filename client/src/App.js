@@ -9,9 +9,11 @@ class App extends Component {
     return (
       <div className="App">
          <nav>
-           <Link to="/dashboard">Dashboard</Link>
+           <Link to="/signup">Dashboard</Link>
          </nav>
-        <SignupForm />
+         <div>
+           <Route path="/signup" component={SignupForm} />
+         </div>
       </div>
     );
   }
