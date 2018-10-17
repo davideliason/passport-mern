@@ -67,7 +67,8 @@ class App extends Component {
 	}
 
 	_login(username, password) {
-	  console.log("log in");
+    console.log("log in init");
+    console.log(username, password);
   }
   
   render() {
