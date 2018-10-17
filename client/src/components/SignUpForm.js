@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Redirect } from 'react-router-dom'
 const axios = require('axios');
 
 class SignupForm extends Component {
@@ -7,7 +7,8 @@ class SignupForm extends Component {
 		super()
 		this.state = {
 			username: '',
-			password: ''
+			password: '',
+			redirectTo: null
 		}
 		this.handleUsernameChange = this.handleUsernameChange.bind(this)
         this.handlePasswordChange = this.handlePasswordChange.bind(this)
@@ -28,21 +29,27 @@ class SignupForm extends Component {
 	handleSubmit(event) {
         event.preventDefault()
         console.log("okay form was POSTed");
-		// axios
-		// 	.post('/auth/signup', {
-		// 		username: this.state.username,
-		// 		password: this.state.password
-		// 	})
-		// 	.then(response => {
-		// 		console.log(response)
-		// 		if (!response.data.errmsg) {
-		// 			console.log('form submitted successfully')
-		// 		} else {
-		// 			console.log('that is a duplicate entry!')
-		// 		}
-		// 	})
+		axios
+			.post('/auth/signup', {
+				username: this.state.username,
+				password: this.state.password
+			})
+			.then(response => {
+				console.log(response)
+				if (response.data) {
+					console.log('form submitted successfully');
+					this.setState({
+						redirectTo: '/login'
+					})
+				} else {
+					console.log('that is a duplicate entry!')
+				}
+			})
 	}
 	render() {
+		if (this.state.redirectTo) {
+			return <Redirect to={{ pathname: this.state.redirectTo }} />
+		}
 		return (
 			<div className="SignupForm">
 				<h1>Signup form</h1>
