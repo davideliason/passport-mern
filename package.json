@@ -1,0 +1,31 @@
+{
+  "name": "passport-mern",
+  "version": "0.1.0",
+  "description": "MERN with passport for login",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davideliason/passport-mern.git"
+  },
+  "keywords": [
+    "mern",
+    "passport"
+  ],
+  "author": "David Eliason",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davideliason/passport-mern/issues"
+  },
+  "homepage": "https://github.com/davideliason/passport-mern#readme"
+}
