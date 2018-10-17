@@ -10,7 +10,8 @@ class SignupForm extends Component {
 			password: ''
 		}
 		this.handleUsernameChange = this.handleUsernameChange.bind(this)
-		this.handlePasswordChange = this.handlePasswordChange.bind(this)
+        this.handlePasswordChange = this.handlePasswordChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
 	}
 	handleUsernameChange(event) {
 		this.setState({
@@ -25,20 +26,21 @@ class SignupForm extends Component {
     }
 
 	handleSubmit(event) {
-		event.preventDefault()
-		axios
-			.post('/auth/signup', {
-				username: this.state.username,
-				password: this.state.password
-			})
-			.then(response => {
-				console.log(response)
-				if (!response.data.errmsg) {
-					console.log('form submitted successfully')
-				} else {
-					console.log('that is a duplicate entry!')
-				}
-			})
+        event.preventDefault()
+        console.log("okay form was POSTed");
+		// axios
+		// 	.post('/auth/signup', {
+		// 		username: this.state.username,
+		// 		password: this.state.password
+		// 	})
+		// 	.then(response => {
+		// 		console.log(response)
+		// 		if (!response.data.errmsg) {
+		// 			console.log('form submitted successfully')
+		// 		} else {
+		// 			console.log('that is a duplicate entry!')
+		// 		}
+		// 	})
 	}
 	render() {
 		return (
@@ -49,14 +51,14 @@ class SignupForm extends Component {
 					type="text"
 					name="username"
 					value={this.state.username}
-					onChange={this.handleChange}
+					onChange={this.handleUsernameChange}
 				/>
 				<label>Password: </label>
 				<input
 					type="password"
 					name="password"
 					value={this.state.password}
-					onChange={this.handleChange}
+					onChange={this.handlePasswordChange}
 				/>
 				<button onClick={this.handleSubmit}>Sign up</button>
 			</div>
