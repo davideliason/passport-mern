@@ -9,18 +9,43 @@ import axios from 'axios'
 const DisplayLoggedOutLinks= props => {
 	if (props.loggedIn) {
 		return (
-			<nav className="navbar">
-						<Link to="#" className="nav-link" onClick={props._logout}>
-							Logout
-						</Link>
-			</nav>
+      <nav className="navbar">
+        <ul className="nav">
+          <li className="nav-item">
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="#" className="nav-link" onClick={props._logout}>
+              Logout
+            </Link>
+          </li>
+        </ul>
+    </nav>
 		)
   }
   else {
     return (
       <nav className="navbar">
-        <Link to="/login">Login</Link>
-     </nav>
+        <ul className="nav">
+          <li className="nav-item">
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/login" className="nav-link">
+              login
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/signup" className="nav-link">
+              sign up
+            </Link>
+          </li>
+        </ul>
+    </nav>
     )
   }
 }
@@ -41,7 +66,6 @@ class App extends Component {
     return (
       <div className="App">
          <nav>
-           <Link to="/signup">Sign Up</Link>
            <Link to="/"> Home</Link>
          </nav>
          <DisplayLoggedOutLinks loggedIn={this.state.loggedIn} />
