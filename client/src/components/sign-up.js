@@ -6,11 +6,12 @@ class Signup extends Component {
 		super()
 		this.state = {
 			username: '',
-			password: ''
+			password: '',
+			redirectTo: null
 		}
         this.handleUsernameChange = this.handleUsernameChange.bind(this)
 		this.handlePasswordChange = this.handlePasswordChange.bind(this)
-		this.handleChange = this.handleChange.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 	handleUsernameChange(event) {
 		this.setState({
@@ -25,10 +26,11 @@ class Signup extends Component {
     }
     
 	handleSubmit(event) {
+		event.preventDefault()
+
 		console.log('sign up form submit click handler invoked');
         console.log(this.state.username)
         console.log(this.state.password)
-		event.preventDefault()
 
         //post to server to add a new usernamr and password
         // from state values
@@ -61,7 +63,7 @@ render() {
 			<form className="form-horizontal">
 				<div className="form-group">
 					<div className="col-1 col-ml-auto">
-						<label>>Username</label>
+						<label>Username</label>
 					</div>
 					<div className="col-3 col-mr-auto">
 						<input className="form-input"
