@@ -7,7 +7,8 @@ require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const dbConnection = require('./db') // loads our connection to the mongo database
+const dbConnection = require('./database')
+const user = require('./routes/user')
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -21,6 +22,8 @@ app.get('/', (req,res) => {
     res.end("hello world");
 });
 
+
+
 // PRODUCTION USE CRA BUILD
 if (process.env.NODE_ENV === 'production') {
 	const path = require('path')
@@ -33,6 +36,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // ROUTES
 app.use('/auth', require('./auth'))
+app.use('/user', user)
 
 
 app.listen(port, ()=>{
