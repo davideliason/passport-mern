@@ -7,6 +7,7 @@ app.get('/', (req,res) => {
     res.end("hello world this is home");
 });
 
+//user signup
 app.post('/user', (req,res)=>{
     res.send("okay got your request");
 });
